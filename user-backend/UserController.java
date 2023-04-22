@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cogent.infotech.user.entity.User;
 import cogent.infotech.user.repository.UserRepository;
 
-@CrossOrigin(origins = "http://localhost:4200/", allowCredentials = "false")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/api")
 public class UserController {

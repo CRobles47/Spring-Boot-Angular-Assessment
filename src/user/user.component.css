@@ -1,0 +1,35 @@
+input{
+    margin: 10px 0;
+}
+
+.card{
+    margin: 10px;
+}
+
+.form-button-row{
+    text-align: right;
+    padding-top: 10px;
+}
+
+.form-button-row button{
+    margin-right: 10px;
+}
+
+.card-title{}
+
+table {
+    width: 100%;
+    text-align: center;
+}
+
+table thead{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.229);
+}
+
+table tbody td{
+    padding: 20px 20px;
+}
+
+.table-button {
+    width: 10%;
+}

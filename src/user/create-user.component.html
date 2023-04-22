@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+      <h2 class="card-title">User</h2>
+    </div>
+    <div class="card-body">
+      <form #createForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="name" placeholder="Enter your name" required [(ngModel)]="user.userName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="age" class="col-sm-2 col-form-label">Age</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="age" placeholder="Enter your age" required [(ngModel)]="user.userAge">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="salary" class="col-sm-2 col-form-label">Salary</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="sal" placeholder="Enter your salary" required [(ngModel)]="user.userSalary">
+          </div>
+        </div>
+        <div class="form-button-row">
+          <button [disabled]="createForm.invalid" type="submit" class="btn btn-primary">Add</button>
+          <button type="button" class="btn btn-warning" (click)="resetForm()">Reset Form</button>
+        </div>
+      </form>
+    </div>
+  </div>

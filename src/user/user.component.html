@@ -1,0 +1,80 @@
+<div>
+    <create-user (userCreated)="getNotification($event)"></create-user>
+
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">List of Users</h2>
+        </div>
+        <div class="card-body">
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>AGE</th>
+                    <th>SALARY</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users | async">
+                        <td>{{ user.userId }}</td>
+                        <td>{{ user.userName }}</td>
+                        <td>{{ user.userAge }}</td>
+                        <td>{{ user.userSalary | currency }}</td>
+                        <td class="table-button">
+                            <button type="button" class="btn btn-success" (click)="openPopup(user)">
+                                Edit
+                            </button>
+                        </td>
+                        <td class="table-button">
+                            <button type="button" class="btn btn-danger" (click)="deleteUser(user.userId)">
+                                Remove
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{ display: displayStyle }">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit User</h4>
+                </div>
+                <div class="modal-body">
+                    <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="name" required
+                                    [(ngModel)]="userToEdit.userName" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="age" class="col-sm-2 col-form-label">Age</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="age" placeholder="Enter your age" required
+                                    [(ngModel)]="userToEdit.userAge" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="salary" class="col-sm-2 col-form-label">Salary</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="sal" placeholder="Enter your salary"
+                                    required [(ngModel)]="userToEdit.userSalary" />
+                            </div>
+                        </div>
+                        <div class="form-button-row">
+                            <button [disabled]="editForm.invalid" type="submit" class="btn btn-primary">
+                                Update
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="closePopup()">
+                                Close
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
